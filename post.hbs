@@ -114,12 +114,26 @@ into the {body} of the default.hbs template --}}
                 {{> subscribe-form}}
             {{/if}}
 
-            {{!--
             <section class="post-full-comments">
-                If you want to embed comments, this is a good place to do it!
+              <div id="disqus_thread"></div>
+              <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+                */
+                var disqus_config = function () {
+                  // this.page.url = "{{url}}";  // Replace PAGE_URL with your page's canonical URL variable
+                  this.page.identifier = "ghost--{{comment_id}}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                (function() { // DON'T EDIT BELOW THIS LINE
+                  var d = document, s = d.createElement('script');
+                  s.src = 'https://jwir3.disqus.com/embed.js';
+                  s.setAttribute('data-timestamp', +new Date());
+                  (d.head || d.body).appendChild(s);
+                  })();
+              </script>
+              <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
             </section>
-            --}}
-
         </article>
 
     </div>
@@ -177,6 +191,14 @@ into the {body} of the default.hbs template --}}
 
 {{!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs --}}
 {{#contentFor "scripts"}}
+  {{!-- MathJAX --}}
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      TeX: { equationNumbers: { autoNumber: "AMS" } }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 <script>
     $(document).ready(function () {
         // FitVids - start
